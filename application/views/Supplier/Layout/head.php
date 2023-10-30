@@ -28,4 +28,8 @@
 	<link rel="stylesheet" href="<?= base_url('asset/themekit-master/') ?>node_modules/owl.carousel/dist/assets/owl.theme.default.css">
 	<link rel="stylesheet" href="<?= base_url('asset/themekit-master/') ?>dist/css/theme.min.css">
 	<script src="<?= base_url('asset/themekit-master/') ?>src/js/vendor/modernizr-2.8.3.min.js"></script>
+	<script src="<?= base_url() ?>asset/chart/code/highcharts.js"></script>
+	<script src="<?= base_url() ?>asset/chart/code/modules/exporting.js"></script>
+	<script src="<?= base_url() ?>asset/chart/code/modules/export-data.js"></script>
+	<script src="<?= base_url() ?>asset/chart/code/modules/accessibility.js"></script>
 </head>
