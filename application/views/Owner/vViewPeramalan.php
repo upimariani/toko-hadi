@@ -4,7 +4,7 @@
 			<div class="row align-items-end">
 				<div class="col-lg-8">
 					<div class="page-header-title">
-						<i class="ik ik-tag bg-blue"></i>
+						<i class="ik ik-pie-chart bg-blue"></i>
 						<div class="d-inline">
 							<h5>Analisis Data Barang</h5>
 							<span>Forecasting Barang</span>
@@ -46,7 +46,7 @@
 		</button>
 		<div class="modal fade" id="modal-default">
 			<div class="modal-dialog">
-				<form action="<?= base_url('Admin/cTransaksi/pesan_supplier') ?>" method="POST">
+				<form action="<?= base_url('Owner/cPeramalan/hitung/' . $id_barang) ?>" method="POST">
 					<div class="modal-content">
 						<div class="modal-header">
 							<h4 class="modal-title">Analisis Peramalan Barang</h4>
@@ -58,8 +58,44 @@
 							<div class="col-lg-12">
 								<div class="form-group">
 									<label for="exampleInputEmail1">Pilih Periode</label>
-									<select class="form-control" name="supplier" required>
+									<select class="form-control" name="periode" required>
 										<option value="">---Pilih Periode Analisis---</option>
+										<?php
+										foreach ($periode as $key => $value) {
+											$cek_analisis = $this->db->query("SELECT * FROM `peramalan` WHERE id_barang='" . $id_barang . "' AND bulan_periode='" . $value->periode . "'")->row();
+										?>
+											<option value="<?= $value->periode ?>" <?php if ($cek_analisis) {
+																						echo 'disabled';
+																					} ?>><?php
+																							if ($value->periode == '1') {
+																								echo 'Januari';
+																							} else if ($value->periode == '2') {
+																								echo 'Februari';
+																							} else if ($value->periode == '3') {
+																								echo 'Maret';
+																							} else if ($value->periode == '4') {
+																								echo 'April';
+																							} else if ($value->periode == '5') {
+																								echo 'Mei';
+																							} else if ($value->periode == '6') {
+																								echo 'Juni';
+																							} else if ($value->periode == '7') {
+																								echo 'Juli';
+																							} else if ($value->periode == '8') {
+																								echo 'Agustus';
+																							} else if ($value->periode == '9') {
+																								echo 'September';
+																							} else if ($value->periode == '10') {
+																								echo 'Oktober';
+																							} else if ($value->periode == '11') {
+																								echo 'November';
+																							} else if ($value->periode == '12') {
+																							}
+																							?></option>
+										<?php
+										}
+										?>
+
 
 									</select>
 								</div>
@@ -76,7 +112,7 @@
 			<!-- /.modal-dialog -->
 		</div>
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-lg-8">
 				<div class="card">
 					<div class="card-header">
 						<h3>Informasi Analisis Peramalan Barang</h3>
@@ -91,7 +127,6 @@
 									<th class="d-none d-md-table-cell">Periode</th>
 									<th class="d-none d-md-table-cell">Data Aktual</th>
 									<th class="d-none d-md-table-cell">Data Peramalan</th>
-									<th class="d-none d-md-table-cell"></th>
 
 								</tr>
 							</thead>
@@ -100,14 +135,35 @@
 									<tr>
 										<td class="d-none d-md-table-cell"><?= $value->nama_barang ?></td>
 										<td class="d-none d-md-table-cell"><?= $value->tgl_peramalan ?></td>
-										<td class="d-none d-md-table-cell"><?= $value->bulan_periode ?></td>
-										<td class="d-none d-md-table-cell"><?= $value->dt_aktual ?></td>
-										<td class="d-none d-md-table-cell"><?= $value->dt_peramalan ?></td>
-										<td class="text-center">
-											<div class="table-actions">
-												<a href="<?= base_url('Owner/cPeramalan/view_analisis/' . $value->id_barang) ?>"><i class="ik ik-eye"></i></a>
-											</div>
-										</td>
+										<td class="d-none d-md-table-cell"><?php
+																			if ($value->bulan_periode == '1') {
+																				echo 'Januari';
+																			} else if ($value->bulan_periode == '2') {
+																				echo 'Februari';
+																			} else if ($value->bulan_periode == '3') {
+																				echo 'Maret';
+																			} else if ($value->bulan_periode == '4') {
+																				echo 'April';
+																			} else if ($value->bulan_periode == '5') {
+																				echo 'Mei';
+																			} else if ($value->bulan_periode == '6') {
+																				echo 'Juni';
+																			} else if ($value->bulan_periode == '7') {
+																				echo 'Juli';
+																			} else if ($value->bulan_periode == '8') {
+																				echo 'Agustus';
+																			} else if ($value->bulan_periode == '9') {
+																				echo 'September';
+																			} else if ($value->bulan_periode == '10') {
+																				echo 'Oktober';
+																			} else if ($value->bulan_periode == '11') {
+																				echo 'November';
+																			} else if ($value->bulan_periode == '12') {
+																			}
+																			?></td>
+										<td class="d-none d-md-table-cell"><?= $value->dt_aktual ?> <?= $value->keterangan ?></td>
+										<td class="d-none d-md-table-cell"><span class="badge badge-success"><?= $value->dt_peramalan ?> <?= $value->keterangan ?></span></td>
+
 									</tr>
 								<?php } ?>
 							</tbody>

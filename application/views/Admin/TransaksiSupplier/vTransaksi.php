@@ -26,7 +26,7 @@
 				</div>
 			</div>
 		</div>
-		<button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-primary mb-3">
+		<button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-info mb-3">
 			<i class="fas fa-plus"></i> Tambah Transaksi
 		</button>
 		<?php

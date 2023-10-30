@@ -4,7 +4,7 @@
 			<div class="row align-items-end">
 				<div class="col-lg-8">
 					<div class="page-header-title">
-						<i class="ik ik-tag bg-blue"></i>
+						<i class="ik ik-pie-chart bg-blue"></i>
 						<div class="d-inline">
 							<h5>Analisis Data Barang</h5>
 							<span>Forecasting Barang</span>
