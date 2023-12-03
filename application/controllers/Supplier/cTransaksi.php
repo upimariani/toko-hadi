@@ -30,6 +30,16 @@ class cTransaksi extends CI_Controller
 		$this->load->view('Supplier/Transaksi/vDetailTransaksi', $data);
 		$this->load->view('Supplier/Layout/footer');
 	}
+	public function tolak_pesanan($id)
+	{
+		$data = array(
+			'stat_pengajuan' => '9'
+		);
+		$this->db->where('id_pengajuan', $id);
+		$this->db->update('pengajuan', $data);
+		$this->session->set_flashdata('success', 'Pesanan Ditolak!');
+		redirect('Supplier/cTransaksi');
+	}
 	public function konfirmasi($id)
 	{
 		$data = array(

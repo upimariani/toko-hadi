@@ -42,6 +42,12 @@
 		<?php
 		}
 		?>
+		<?php
+		$konfirmasi = $this->db->query("SELECT COUNT(id_pengajuan) as notif FROM `pengajuan` WHERE stat_pengajuan='1' AND id_supplier='" . $this->session->userdata('id_supplier') . "'")->row();
+		$diproses = $this->db->query("SELECT COUNT(id_pengajuan) as notif FROM `pengajuan` WHERE stat_pengajuan='2' AND id_supplier='" . $this->session->userdata('id_supplier') . "'")->row();
+		$dikirim = $this->db->query("SELECT COUNT(id_pengajuan) as notif FROM `pengajuan` WHERE stat_pengajuan='3' AND id_supplier='" . $this->session->userdata('id_supplier') . "'")->row();
+		$belum_bayar = $this->db->query("SELECT COUNT(id_pengajuan) as notif FROM `pengajuan` WHERE stat_pengajuan='0' AND id_supplier='" . $this->session->userdata('id_supplier') . "'")->row();
+		?>
 
 		<!-- /.modal -->
 		<div class="row">
@@ -51,16 +57,16 @@
 						<ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
 
 							<li class="nav-item">
-								<a class="nav-link" id="custom-tabs-one-abc-tab" data-toggle="pill" href="#custom-tabs-one-abc" role="tab" aria-controls="custom-tabs-one-abc" aria-selected="true">Belum Bayar</a>
+								<a class="nav-link" id="custom-tabs-one-abc-tab" data-toggle="pill" href="#custom-tabs-one-abc" role="tab" aria-controls="custom-tabs-one-abc" aria-selected="true">Belum Bayar <span class="badge bg-danger"><?= $belum_bayar->notif ?></span></a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Menunggu Konfirmasi</a>
+								<a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Menunggu Konfirmasi <span class="badge bg-warning"><?= $konfirmasi->notif ?></span></a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Pesanan Diproses</a>
+								<a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Pesanan Diproses <span class="badge bg-info"><?= $diproses->notif ?></span></a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill" href="#custom-tabs-one-settings" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Pesanan Dikirim</a>
+								<a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill" href="#custom-tabs-one-settings" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Pesanan Dikirim <span class="badge bg-success"><?= $dikirim->notif ?></span></a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" id="custom-tabs-one-selesai-tab" data-toggle="pill" href="#custom-tabs-one-selesai" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Pesanan Selesai</a>
@@ -130,9 +136,14 @@
 																?>
 															</td>
 
-															<td class="text-center"> <a href="<?= base_url('Supplier/cTransaksi/detail_transaksi/' . $value->id_pengajuan) ?>" class="btn btn-warning">
+															<td class="text-center">
+																<a href="<?= base_url('Supplier/cTransaksi/detail_transaksi/' . $value->id_pengajuan) ?>" class="btn btn-warning">
 																	<i class="fas fa-info"></i> Detail Transaksi
-																</a> </td>
+																</a>
+																<a href="<?= base_url('Supplier/cTransaksi/tolak_pesanan/' . $value->id_pengajuan) ?>" class="btn btn-danger">
+																	<i class="fas fa-arrow-up"></i> Tolak Pesanan
+																</a>
+															</td>
 														</tr>
 												<?php
 													}

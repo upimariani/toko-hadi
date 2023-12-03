@@ -103,6 +103,9 @@
 							<li class="nav-item">
 								<a class="nav-link" id="custom-tabs-one-selesai-tab" data-toggle="pill" href="#custom-tabs-one-selesai" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Pesanan Selesai</a>
 							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="custom-tabs-one-tolak-tab" data-toggle="pill" href="#custom-tabs-one-tolak" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Pesanan Ditolak</a>
+							</li>
 						</ul>
 					</div>
 					<div class="card-body">
@@ -510,6 +513,61 @@
 													<th>Total Bayar</th>
 													<th>Status Pesanan</th>
 													<th class="text-center">Action</th>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+									<!-- /.card-body -->
+								</div>
+							</div>
+							<div class="tab-pane fade" id="custom-tabs-one-tolak" role="tabpanel" aria-labelledby="custom-tabs-one-tolak-tab">
+								<div class="card">
+									<div class="card-header">
+										<h3 class="card-title">Informasi Transaksi Ditolak</h3>
+									</div>
+									<!-- /.card-header -->
+									<div class="card-body">
+										<table class="example1 table table-bordered table-striped">
+											<thead>
+												<tr>
+													<th>No</th>
+													<th>Nama Supplier</th>
+													<th>Tanggal Transaksi</th>
+													<th>Total Bayar</th>
+													<th>Status Pesanan</th>
+												</tr>
+											</thead>
+											<tbody>
+												<?php
+												$no = 1;
+												foreach ($transaksi as $key => $value) {
+													if ($value->stat_pengajuan == '9') {
+
+												?>
+														<tr>
+															<td><?= $no++ ?></td>
+															<td><?= $value->nama_supp ?></td>
+															<td><?= $value->tgl_pengajuan ?></td>
+															<td>Rp. <?= number_format($value->total_pengajuan)  ?></td>
+
+															<td>
+																<span class="badge badge-danger">Pesanan Ditolak Supplier</span>
+
+															</td>
+														</tr>
+												<?php
+													}
+												}
+												?>
+											</tbody>
+											<tfoot>
+
+												<tr>
+													<th>No</th>
+													<th>Nama Supplier</th>
+													<th>Tanggal Transaksi</th>
+													<th>Total Bayar</th>
+													<th>Status Pesanan</th>
 												</tr>
 											</tfoot>
 										</table>

@@ -101,6 +101,23 @@ class cPeramalan extends CI_Controller
 			redirect('Owner/cPeramalan/view_analisis/' . $id_barang);
 		}
 	}
+	public function hapus($id_peramalan, $id_barang, $bulan)
+	{
+		$bulan = $bulan - 1;
+		//memperbaharui data sebelumnya
+		$data = array(
+			'dt_aktual' => '0'
+		);
+		$this->db->where('id_barang', $id_barang);
+		$this->db->where('bulan_periode', $bulan);
+		$this->db->update('peramalan', $data);
+
+		//menghapus data
+		$this->db->where('id_peramalan', $id_peramalan);
+		$this->db->delete('peramalan');
+		$this->session->set_flashdata('success', 'Peramalan Berhasil Dihapus!');
+		redirect('Owner/cPeramalan/view_analisis/' . $id_barang);
+	}
 }
 
 /* End of file cPeramalan.php */

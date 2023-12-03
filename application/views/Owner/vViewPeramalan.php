@@ -127,6 +127,7 @@
 									<th class="d-none d-md-table-cell">Periode</th>
 									<th class="d-none d-md-table-cell">Data Aktual</th>
 									<th class="d-none d-md-table-cell">Data Peramalan</th>
+									<th class="d-none d-md-table-cell">Hapus</th>
 
 								</tr>
 							</thead>
@@ -163,7 +164,13 @@
 																			?></td>
 										<td class="d-none d-md-table-cell"><?= $value->dt_aktual ?> <?= $value->keterangan ?></td>
 										<td class="d-none d-md-table-cell"><span class="badge badge-success"><?= $value->dt_peramalan ?> <?= $value->keterangan ?></span></td>
-
+										<?php
+										if ($value->dt_aktual == '0') {
+										?>
+											<td><a href="<?= base_url('Owner/cPeramalan/hapus/' . $value->id_peramalan . '/' . $value->id_barang . '/' . $value->bulan_periode) ?>" class="btn btn-danger btn-sm">Hapus</a></td>
+										<?php
+										}
+										?>
 									</tr>
 								<?php } ?>
 							</tbody>
