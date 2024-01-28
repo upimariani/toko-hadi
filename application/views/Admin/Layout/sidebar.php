@@ -61,13 +61,20 @@
 								<a href="<?= base_url('Admin/cSupplier') ?>"><i class="ik ik-moon"></i><span>Supplier</span></a>
 							</div>
 
-							<div class="nav-lavel">Laporan</div>
+							<div class="nav-lavel">LAPORAN</div>
 
 							<div class="nav-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cTransaksi') {
 														echo 'active';
 													}  ?>">
 
 								<a href="<?= base_url('Admin/cTransaksi') ?>"><i class="ik ik-shopping-cart"></i><span>Transaksi</span></a>
+							</div>
+							<div class="nav-lavel">ANALISIS</div>
+
+							<div class="nav-item <?php if ($this->uri->segment(1) == 'Owner' && $this->uri->segment(2) == 'cPeramalan') {
+														echo 'active';
+													}  ?>">
+								<a href="<?= base_url('Owner/cPeramalan') ?>"><i class="ik ik-pie-chart"></i><span>Forecasting</span></a>
 							</div>
 
 							<div class="nav-item">

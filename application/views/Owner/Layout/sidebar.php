@@ -48,13 +48,7 @@
 								<a href="<?= base_url('Owner/cDashboard') ?>"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
 							</div>
 
-							<div class="nav-lavel">ANALISIS</div>
-
-							<div class="nav-item <?php if ($this->uri->segment(1) == 'Owner' && $this->uri->segment(2) == 'cPeramalan') {
-														echo 'active';
-													}  ?>">
-								<a href="<?= base_url('Owner/cPeramalan') ?>"><i class="ik ik-pie-chart"></i><span>Forecasting</span></a>
-							</div>
+							
 
 
 							<div class="nav-lavel">Laporan</div>

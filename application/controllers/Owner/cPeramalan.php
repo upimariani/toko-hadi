@@ -15,10 +15,10 @@ class cPeramalan extends CI_Controller
 		$data = array(
 			'barang' => $this->mPeramalan->barang()
 		);
-		$this->load->view('Owner/Layout/head');
-		$this->load->view('Owner/Layout/sidebar');
+		$this->load->view('Admin/Layout/head');
+		$this->load->view('Admin/Layout/sidebar');
 		$this->load->view('Owner/vPeramalan', $data);
-		$this->load->view('Owner/Layout/footer');
+		$this->load->view('Admin/Layout/footer');
 	}
 	public function view_analisis($id_barang)
 	{
@@ -27,10 +27,10 @@ class cPeramalan extends CI_Controller
 			'periode' => $this->mPeramalan->periode(),
 			'id_barang' => $id_barang
 		);
-		$this->load->view('Owner/Layout/head');
-		$this->load->view('Owner/Layout/sidebar');
+		$this->load->view('Admin/Layout/head');
+		$this->load->view('Admin/Layout/sidebar');
 		$this->load->view('Owner/vViewPeramalan', $data);
-		$this->load->view('Owner/Layout/footer');
+		$this->load->view('Admin/Layout/footer');
 	}
 	public function hitung($id_barang)
 	{
