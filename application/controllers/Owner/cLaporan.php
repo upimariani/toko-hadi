@@ -32,6 +32,18 @@ class cLaporan extends CI_Controller
 	public function cetak_laporan()
 	{
 		$bulan = $this->input->post('periode');
+		if ($bulan <= '12') {
+			$bulan = $bulan;
+			$tahun = '2023';
+		} else {
+			if ($bulan == '13') {
+				$bulan = '1';
+				$tahun = '2024';
+			} else {
+				$bulan = '2';
+				$tahun = '2024';
+			}
+		}
 
 		// memanggil library FPDF
 		require('asset/fpdf/fpdf.php');
@@ -58,7 +70,7 @@ class cLaporan extends CI_Controller
 		$no = 1;
 
 
-		$data = $this->mLaporan->laporan_periode($bulan);
+		$data = $this->mLaporan->laporan_periode($bulan, $tahun);
 		$total = 0;
 		foreach ($data as $key => $value) {
 			$total += ($value->harga * $value->qty);

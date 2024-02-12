@@ -41,9 +41,9 @@
 		<?php
 		}
 		?>
-		<button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-success mb-3">
+		<!-- <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-success mb-3">
 			<i class="fas fa-plus"></i> Tambah Analisis
-		</button>
+		</button> -->
 		<div class="modal fade" id="modal-default">
 			<div class="modal-dialog">
 				<form action="<?= base_url('Owner/cPeramalan/hitung/' . $id_barang) ?>" method="POST">
@@ -127,7 +127,7 @@
 									<th class="d-none d-md-table-cell">Periode</th>
 									<th class="d-none d-md-table-cell">Data Aktual</th>
 									<th class="d-none d-md-table-cell">Data Peramalan</th>
-									<th class="d-none d-md-table-cell">Hapus</th>
+									<!-- <th class="d-none d-md-table-cell">Hapus</th> -->
 
 								</tr>
 							</thead>

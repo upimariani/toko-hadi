@@ -87,18 +87,23 @@
 				<div class="card card-info card-tabs">
 					<div class="card-header p-0 pt-1">
 						<ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
-
+							<?php
+							$konfirmasi = $this->db->query("SELECT COUNT(id_pengajuan) as notif FROM `pengajuan` WHERE stat_pengajuan='1'")->row();
+							$diproses = $this->db->query("SELECT COUNT(id_pengajuan) as notif FROM `pengajuan` WHERE stat_pengajuan='2'")->row();
+							$dikirim = $this->db->query("SELECT COUNT(id_pengajuan) as notif FROM `pengajuan` WHERE stat_pengajuan='3'")->row();
+							$belum_bayar = $this->db->query("SELECT COUNT(id_pengajuan) as notif FROM `pengajuan` WHERE stat_pengajuan='0'")->row();
+							?>
 							<li class="nav-item">
-								<a class="nav-link" id="custom-tabs-one-abc-tab" data-toggle="pill" href="#custom-tabs-one-abc" role="tab" aria-controls="custom-tabs-one-abc" aria-selected="true">Belum Bayar</a>
+								<a class="nav-link" id="custom-tabs-one-abc-tab" data-toggle="pill" href="#custom-tabs-one-abc" role="tab" aria-controls="custom-tabs-one-abc" aria-selected="true">Belum Bayar <span class="badge bg-danger"><?= $belum_bayar->notif ?></span></a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Menunggu Konfirmasi</a>
+								<a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Menunggu Konfirmasi <span class="badge bg-warning"><?= $konfirmasi->notif ?></span></a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Pesanan Diproses</a>
+								<a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Pesanan Diproses <span class="badge bg-info"><?= $diproses->notif ?></span></a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill" href="#custom-tabs-one-settings" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Pesanan Dikirim</a>
+								<a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill" href="#custom-tabs-one-settings" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Pesanan Dikirim <span class="badge bg-success"><?= $dikirim->notif ?></span></a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" id="custom-tabs-one-selesai-tab" data-toggle="pill" href="#custom-tabs-one-selesai" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Pesanan Selesai</a>

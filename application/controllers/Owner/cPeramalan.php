@@ -22,6 +22,44 @@ class cPeramalan extends CI_Controller
 	}
 	public function view_analisis($id_barang)
 	{
+		// echo 'Bismillah perhitungan<br>';
+		$dt_aktual = $this->mPeramalan->dt_aktual($id_barang);
+		foreach ($dt_aktual as $key => $value) {
+			$cek_data_peramalan = $this->db->query("SELECT * FROM `peramalan` WHERE id_barang='" . $id_barang . "' AND bulan_periode='" . $value->periode . "';")->row();
+			if (!$cek_data_peramalan) {
+				// echo $value->jumlah;
+				// echo ' | ';
+				if ($value->periode == '1') {
+					$dt_peramalan = '0';
+					// echo $value->jumlah;
+
+					$data = array(
+						'id_barang' => $id_barang,
+						'tgl_peramalan' => date('Y-m-d'),
+						'bulan_periode' => $value->periode,
+						'dt_aktual' => $value->jumlah,
+						'dt_peramalan' => $value->jumlah
+					);
+					$this->db->insert('peramalan', $data);
+				} else {
+					$per = $value->periode - 1;
+					$dt_peramalan_sebelumnya = $this->db->query("SELECT * FROM `peramalan` WHERE id_barang='" . $id_barang . "' AND bulan_periode='" . $per . "';")->row();
+					$ft = round((0.1 * $value->jumlah) + ((1 - 0.1) * $dt_peramalan_sebelumnya->dt_peramalan));
+					echo $ft;
+
+					$data = array(
+						'id_barang' => $id_barang,
+						'tgl_peramalan' => date('Y-m-d'),
+						'bulan_periode' => $value->periode,
+						'dt_aktual' => $value->jumlah,
+						'dt_peramalan' => $ft
+					);
+					$this->db->insert('peramalan', $data);
+				}
+				// echo '<br>';
+			}
+		}
+
 		$data = array(
 			'view_analisis' => $this->mPeramalan->view_peramalan($id_barang),
 			'periode' => $this->mPeramalan->periode(),

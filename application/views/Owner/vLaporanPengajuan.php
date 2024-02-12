@@ -69,6 +69,8 @@
 										<option value="10">Oktober 2023</option>
 										<option value="11">November 2023</option>
 										<option value="12">Desember 2023</option>
+										<option value="13">Januari 2024</option>
+										<option value="14">Februari 2024</option>
 									</select>
 									<button type="submit" class="btn btn-warning mt-3">Cetak Laporan</button>
 								</div>

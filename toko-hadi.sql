@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Okt 2023 pada 12.22
--- Versi server: 10.4.6-MariaDB
--- Versi PHP: 7.3.9
+-- Generation Time: Feb 12, 2024 at 11:54 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `barang`
+-- Table structure for table `barang`
 --
 
 CREATE TABLE `barang` (
@@ -39,12 +39,12 @@ CREATE TABLE `barang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `barang`
+-- Dumping data for table `barang`
 --
 
 INSERT INTO `barang` (`id_barang`, `id_supplier`, `nama_barang`, `deskripsi`, `keterangan`, `harga`, `stok`) VALUES
 (1, 1, 'Beras', 'Beras Cianjur', 'kg', '11000', 995),
-(2, 1, 'Gula Pasir Putih', 'Gula Pasir Putih', 'kg', '10000', 1000),
+(2, 1, 'Gula Pasir Putih', 'Gula Pasir Putih', 'kg', '10000', 995),
 (3, 1, 'Minyak', 'Minyak Curah', 'liter', '15000', 1000),
 (4, 1, 'Terigu Segitia', 'Terigu Protein Sedang', 'kg', '14000', 120000),
 (5, 1, 'Telor', 'Telor Ayam Neger', 'kg', '25000', 120000),
@@ -53,7 +53,7 @@ INSERT INTO `barang` (`id_barang`, `id_supplier`, `nama_barang`, `deskripsi`, `k
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_pengajuan`
+-- Table structure for table `detail_pengajuan`
 --
 
 CREATE TABLE `detail_pengajuan` (
@@ -64,7 +64,7 @@ CREATE TABLE `detail_pengajuan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `detail_pengajuan`
+-- Dumping data for table `detail_pengajuan`
 --
 
 INSERT INTO `detail_pengajuan` (`id_detail`, `id_pengajuan`, `id_barang`, `qty`) VALUES
@@ -370,12 +370,13 @@ INSERT INTO `detail_pengajuan` (`id_detail`, `id_pengajuan`, `id_barang`, `qty`)
 (300, 300, 4, 10),
 (301, 301, 3, 55),
 (302, 302, 2, 53),
-(303, 303, 4, 51);
+(303, 303, 4, 51),
+(304, 304, 2, 5);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengajuan`
+-- Table structure for table `pengajuan`
 --
 
 CREATE TABLE `pengajuan` (
@@ -390,7 +391,7 @@ CREATE TABLE `pengajuan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pengajuan`
+-- Dumping data for table `pengajuan`
 --
 
 INSERT INTO `pengajuan` (`id_pengajuan`, `id_user`, `id_supplier`, `tgl_pengajuan`, `stat_pengajuan`, `stat_pembayaran`, `bukti_payment`, `total_pengajuan`) VALUES
@@ -696,12 +697,13 @@ INSERT INTO `pengajuan` (`id_pengajuan`, `id_user`, `id_supplier`, `tgl_pengajua
 (300, 1, 1, '2023-10-27', 4, 1, 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-dan-Internet-Banking-Mandiri-1.jpg', '140000'),
 (301, 1, 1, '2023-10-28', 4, 1, 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-dan-Internet-Banking-Mandiri-1.jpg', '825000'),
 (302, 1, 1, '2023-10-29', 4, 1, 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-dan-Internet-Banking-Mandiri-1.jpg', '530000'),
-(303, 1, 1, '2023-10-30', 4, 1, 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-dan-Internet-Banking-Mandiri-1.jpg', '714000');
+(303, 1, 1, '2023-10-30', 4, 1, 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-dan-Internet-Banking-Mandiri-1.jpg', '714000'),
+(304, 1, 1, '2024-02-12', 0, 0, '0', '50000');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `peramalan`
+-- Table structure for table `peramalan`
 --
 
 CREATE TABLE `peramalan` (
@@ -714,34 +716,65 @@ CREATE TABLE `peramalan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `peramalan`
+-- Dumping data for table `peramalan`
 --
 
 INSERT INTO `peramalan` (`id_peramalan`, `id_barang`, `tgl_peramalan`, `bulan_periode`, `dt_aktual`, `dt_peramalan`) VALUES
-(1, 1, '2023-10-30', 1, 156, 156),
-(2, 1, '2023-10-30', 2, 110, 156),
-(3, 1, '2023-10-30', 3, 206, 151),
-(4, 1, '2023-10-30', 4, 158, 157),
-(5, 2, '2023-10-30', 1, 165, 165),
-(6, 2, '2023-10-30', 2, 144, 165),
-(7, 2, '2023-10-30', 3, 0, 163),
-(8, 1, '2023-10-30', 5, 0, 157),
-(9, 3, '2023-10-30', 1, 161, 161),
-(10, 3, '2023-10-30', 2, 278, 161),
-(11, 3, '2023-10-30', 3, 56, 173),
-(12, 3, '2023-10-30', 4, 232, 161),
-(13, 3, '2023-10-30', 5, 0, 168),
-(14, 6, '2023-10-30', 1, 188, 188),
-(15, 6, '2023-10-30', 2, 0, 188),
-(16, 5, '2023-10-30', 1, 91, 91),
-(17, 5, '2023-10-30', 2, 0, 91),
-(18, 4, '2023-10-30', 1, 221, 221),
-(19, 4, '2023-10-30', 2, 0, 221);
+(1, 1, '2024-02-12', 1, 156, 156),
+(2, 1, '2024-02-12', 2, 110, 151),
+(3, 1, '2024-02-12', 3, 206, 157),
+(4, 1, '2024-02-12', 4, 158, 157),
+(5, 1, '2024-02-12', 5, 136, 155),
+(6, 1, '2024-02-12', 6, 108, 150),
+(7, 1, '2024-02-12', 7, 33, 138),
+(8, 1, '2024-02-12', 8, 139, 138),
+(9, 1, '2024-02-12', 9, 196, 144),
+(10, 1, '2024-02-12', 10, 202, 150),
+(11, 2, '2024-02-12', 1, 165, 165),
+(12, 2, '2024-02-12', 2, 149, 163),
+(13, 2, '2024-02-12', 3, 230, 170),
+(14, 2, '2024-02-12', 4, 267, 180),
+(15, 2, '2024-02-12', 5, 61, 168),
+(16, 2, '2024-02-12', 6, 218, 173),
+(17, 2, '2024-02-12', 7, 221, 178),
+(18, 2, '2024-02-12', 8, 133, 174),
+(19, 2, '2024-02-12', 9, 65, 163),
+(20, 2, '2024-02-12', 10, 181, 165),
+(21, 3, '2024-02-12', 1, 161, 161),
+(22, 3, '2024-02-12', 2, 278, 173),
+(23, 3, '2024-02-12', 3, 56, 161),
+(24, 3, '2024-02-12', 4, 232, 168),
+(25, 3, '2024-02-12', 5, 121, 163),
+(26, 3, '2024-02-12', 6, 68, 154),
+(27, 3, '2024-02-12', 7, 130, 152),
+(28, 3, '2024-02-12', 8, 290, 166),
+(29, 3, '2024-02-12', 9, 166, 166),
+(30, 3, '2024-02-12', 10, 158, 165),
+(31, 4, '2024-02-12', 1, 221, 221),
+(32, 4, '2024-02-12', 2, 161, 215),
+(33, 4, '2024-02-12', 3, 192, 213),
+(34, 4, '2024-02-12', 4, 119, 204),
+(35, 4, '2024-02-12', 5, 200, 204),
+(36, 4, '2024-02-12', 6, 175, 201),
+(37, 4, '2024-02-12', 7, 191, 200),
+(38, 4, '2024-02-12', 8, 138, 194),
+(39, 4, '2024-02-12', 9, 82, 183),
+(40, 4, '2024-02-12', 10, 204, 185),
+(41, 6, '2024-02-12', 1, 188, 188),
+(42, 6, '2024-02-12', 2, 217, 191),
+(43, 6, '2024-02-12', 3, 277, 200),
+(44, 6, '2024-02-12', 4, 76, 188),
+(45, 6, '2024-02-12', 5, 287, 198),
+(46, 6, '2024-02-12', 6, 242, 202),
+(47, 6, '2024-02-12', 7, 103, 192),
+(48, 6, '2024-02-12', 8, 213, 194),
+(49, 6, '2024-02-12', 9, 288, 203),
+(50, 6, '2024-02-12', 10, 137, 196);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `supplier`
+-- Table structure for table `supplier`
 --
 
 CREATE TABLE `supplier` (
@@ -754,7 +787,7 @@ CREATE TABLE `supplier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `supplier`
+-- Dumping data for table `supplier`
 --
 
 INSERT INTO `supplier` (`id_supplier`, `nama_supp`, `alamat_supp`, `no_hp`, `username`, `password`) VALUES
@@ -763,7 +796,7 @@ INSERT INTO `supplier` (`id_supplier`, `nama_supp`, `alamat_supp`, `no_hp`, `use
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -777,7 +810,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `nama`, `alamat`, `no_hp`, `username`, `password`, `level_user`) VALUES
@@ -789,77 +822,77 @@ INSERT INTO `user` (`id_user`, `nama`, `alamat`, `no_hp`, `username`, `password`
 --
 
 --
--- Indeks untuk tabel `barang`
+-- Indexes for table `barang`
 --
 ALTER TABLE `barang`
   ADD PRIMARY KEY (`id_barang`);
 
 --
--- Indeks untuk tabel `detail_pengajuan`
+-- Indexes for table `detail_pengajuan`
 --
 ALTER TABLE `detail_pengajuan`
   ADD PRIMARY KEY (`id_detail`);
 
 --
--- Indeks untuk tabel `pengajuan`
+-- Indexes for table `pengajuan`
 --
 ALTER TABLE `pengajuan`
   ADD PRIMARY KEY (`id_pengajuan`);
 
 --
--- Indeks untuk tabel `peramalan`
+-- Indexes for table `peramalan`
 --
 ALTER TABLE `peramalan`
   ADD PRIMARY KEY (`id_peramalan`);
 
 --
--- Indeks untuk tabel `supplier`
+-- Indexes for table `supplier`
 --
 ALTER TABLE `supplier`
   ADD PRIMARY KEY (`id_supplier`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `barang`
+-- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
   MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `detail_pengajuan`
+-- AUTO_INCREMENT for table `detail_pengajuan`
 --
 ALTER TABLE `detail_pengajuan`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=304;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=305;
 
 --
--- AUTO_INCREMENT untuk tabel `pengajuan`
+-- AUTO_INCREMENT for table `pengajuan`
 --
 ALTER TABLE `pengajuan`
-  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=304;
+  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=305;
 
 --
--- AUTO_INCREMENT untuk tabel `peramalan`
+-- AUTO_INCREMENT for table `peramalan`
 --
 ALTER TABLE `peramalan`
-  MODIFY `id_peramalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_peramalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
--- AUTO_INCREMENT untuk tabel `supplier`
+-- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
   MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
